@@ -10,17 +10,17 @@
 	div#calendar{
 		float: left; 
 		width: 42%;
-		height:500px;
+		height:600px;
 		padding:10px;
 		margin-left: 100px;
 	}
 	div#logincheck{
 		border-left: 1px solid black; 
 		float: left; 
-		height:500px;
+		height:600px;
 		width: 42%; 
 		padding:10px;
-		padding-top: 200px;
+		padding-top: 250px;
 		
 	}
 	div#mainBoard{ 
@@ -41,9 +41,10 @@
       }
 
 </style>
-
-<div style="border: solid 1px black; width: 30px; font-size: 20pt; font-weight: bold;">
-	&nbsp;>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<div style="width: 40px; font-size: 20pt; font-weight: bold; cursor:pointer;">
+	<img src="<%= ctxPath%>/resources/images/addmenu.png" style="width:100%;">
 </div>
 
 <div id="calendar" align="center">
@@ -52,7 +53,7 @@
 
 
 <div id="logincheck" align="center" >
-	<span style="font-size: 20pt; ">로그인을 해주세요.</span>
+	<span style="font-size: 20pt; font-weight: bold;">로그인을 해주세요.</span>
 </div>
 
 <div id="mainBoard" align="center">
