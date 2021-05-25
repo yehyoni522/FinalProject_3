@@ -1,15 +1,16 @@
 @charset "UTF-8";
 
-body {font-family: Arial, Helvetica, sans-serif, 돋움; }
+body{
+   font-family: 'Noto Sans KR', sans-serif;
+}
 
 #mycontainer	{ width:85%; margin:0 auto; padding:20px; }
-
+/*header css*/
 #myheader		{ height:300px; padding: 10px; border-bottom: solid 1.5px black;}
-#logo			{ border: 1px solid blue; padding:80px 50px 80px 50px; margin: 10px 500px 10px 500px;}
+#logo			{ margin: 10px 400px 10px 400px;}
 #login			{ text-align: right; padding-right: 30px;}
 
-
-#mycontent		{ min-height:800px; padding-top: 40px;}
+#mycontent		{ min-height:1300px; padding-top: 40px;}
 
 #myheader a {text-decoration:none;}
 
