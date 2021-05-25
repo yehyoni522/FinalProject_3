@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- === #25. tiles 를 사용하는 레이아웃2 페이지 만들기 === --%>
+    <%-- === #24. tiles 를 사용하는 레이아웃1 페이지 만들기 === --%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <%
@@ -10,20 +10,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>쌍용대학교  LMS 로그인</title>
+<title>게시판</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="<%=ctxPath%>/resources/css/style3.css" />
 
-<link rel="stylesheet" type="text/css" href="<%=ctxPath %>/resources/css/style2.css" />
+<%--  ===== #179. 스피너를 사용하기 위해  jquery-ui 사용하기 ===== --%>
+<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/resources/jquery-ui-1.11.4.custom/jquery-ui.css" />
+<script type="text/javascript" src="<%= ctxPath%>/resources/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 </head>
 <body>
-<div id="mycontainer">
+ <div id="mycontainer">
       <div id="myheader">
          <tiles:insertAttribute name="header" />
       </div>
       
+      <div id="mysideinfo">
+         <tiles:insertAttribute name="sideinfo" />
+      </div>   
+         
       <div id="mycontent">
          <tiles:insertAttribute name="content" />
       </div>

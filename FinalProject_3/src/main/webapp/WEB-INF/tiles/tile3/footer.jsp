@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+
 
 	<div id="footerSchoolName">
 			<span style="font-size: 25pt; font-weight: bold;">쌍용대학교Ssangyong</span><br>

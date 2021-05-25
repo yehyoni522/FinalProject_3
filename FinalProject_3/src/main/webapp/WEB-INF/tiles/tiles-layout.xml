@@ -43,5 +43,24 @@
    <definition name="*/*/*.tiles2" extends="layout-tiles2">
       <put-attribute name="content" value="/WEB-INF/views/tiles2/{1}/{2}/{3}.jsp"/>
    </definition>
+   
+
+   <definition name="layout-tiles3"  template="/WEB-INF/tiles/layout/layout-tiles3.jsp"> 
+      <put-attribute name="header"  value="/WEB-INF/tiles/tile3/header.jsp" />
+      <put-attribute name="content" value="" />
+      <put-attribute name="sideinfo"  value="/WEB-INF/tiles/tile3/sideinfo.jsp" />
+      <put-attribute name="footer"  value="/WEB-INF/tiles/tile3/footer.jsp" />
+   </definition>
+   
+   <definition name="*.tiles3" extends="layout-tiles3">
+      <put-attribute name="content" value="/WEB-INF/views/tiles3/{1}.jsp"/>
+   </definition>
+   <definition name="*/*.tiles3" extends="layout-tiles3">
+      <put-attribute name="content" value="/WEB-INF/views/tiles3/{1}/{2}.jsp"/>
+   </definition>
+   <definition name="*/*/*.tiles3" extends="layout-tiles3">
+      <put-attribute name="content" value="/WEB-INF/views/tiles3/{1}/{2}/{3}.jsp"/>
+   </definition>   
+   
 
 </tiles-definitions> 
