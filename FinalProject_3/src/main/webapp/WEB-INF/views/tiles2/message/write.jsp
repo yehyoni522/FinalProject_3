@@ -13,6 +13,10 @@
 
 <title> 쪽지함</title>
 <style type="text/css">
+body{
+   font-family: 'Noto Sans KR', sans-serif;
+}
+
 
 div#msgSide{
 	/* border: solid 1px blue;  */
@@ -124,7 +128,7 @@ button.re{
 	transition:0.3s;
 	transform: translate(-50%,-50%);
 	margin-top:20px;
-	margin-left: 300px;
+	margin-left: 270px;
 }
 button.re:focus {
 	outline:0;
@@ -136,6 +140,36 @@ button.re:hover{
 	box-shadow: 0 2px 4px #2ECC71;
 }
 
+
+
+.green_window {
+	display: inline-block;
+	width: 200px;
+	border: 3px solid #2ECC71;
+	border-radius: 20px;
+}
+.input_text {
+	width: calc( 100% - 40px );
+	margin: 6px 7px;
+	border: 0;
+	font-weight: bold;
+	font-size: 12px;
+	outline: none;
+	border-radius: 20px;
+}
+.sch_smit {
+	width: 40px; height: 30px;
+	margin-top: 5px; border: 0;
+	vertical-align: top;
+	background: #2ECC71;
+	color: white;
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 12px;
+}
+.sch_smit:hover {
+	background: #27AF61;
+}
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -179,18 +213,23 @@ button.re:hover{
 	</div>	
 </div>
 
-<div class="msgContents" style="width: 70%; display:inline-block ; ">
+<div class="msgContents" style="width: 70%; display:inline-block ; margin-left:20px; ">
 
  	
     	<form name="writeFrm" style="margin-top: 20px;">
 			      <input type="hidden" name="fk_userid" value="${sessionScope.loginuser.userid}" />
-			받는사람  &nbsp;&nbsp;<input type="text" name="name" value="${sessionScope.loginuser.name}" /><a style="cursor: pointer;" data-toggle="modal" data-target="#userIdfind" data-dismiss="modal"><button>찾기</button></a>   <input id="forme" type="checkbox"><label for="forme" style="font-size:12px;">내게쓰기</label>
+			<input id="forme" type="checkbox"><label for="forme" style="font-size:12px;">내게쓰기</label>&nbsp;&nbsp;
+			<span class='green_window'>
+			<input type='text' class='input_text' placeholder="받는사람" />
+			</span>
+			<a style="cursor: pointer;" data-toggle="modal" data-target="#userfind" data-dismiss="modal"><button type='submit' class='sch_smit' onclick="goSearch();">찾기</button></a>
+			 
 			<br><br>
 			<textarea rows="15" cols="50"></textarea>
 			
 			<input type="hidden" name="parentSeq" value="${requestScope.boardvo.seq}" /> 
 			<br>
-			
+			<a>임시저장</a>
 			<button class="re" id="btnComment" type="button" onclick="goWrite()">전송</button> 
 			<button class="del" type="reset">취소</button> 
 		</form>
@@ -206,11 +245,10 @@ button.re:hover{
       <div class="modal-content">
 	      
 	        <div class="modal-header">
-		          <button type="button" class="close myclose" data-dismiss="modal">&times;</button>
-		          <h4 class="modal-title" align="center" style="font-weight:bold; font-size: 25pt;">아이디 찾기</h4>
+		          <button type="button" class="close myclose" data-dismiss="modal">&times;</button>  
 		          <br>
-		          <div align="center" >회원님의 아이디를 잊으셨나요?</div>
-		          <div align="center" >이름과 가입 시 기재한 이메일 주소를 입력하시면 고객님의 정보를 알려드립니다.</div>
+		          <div align="center" style="font-weight: bold; font-size: 18pt;">쪽지주소검색</div>
+		          <div align="center" >학번 혹은 교수번호가 쪽지 주소입니다.</div>
 	        </div>
 	        
 	        <div class="modal-body" style="height: 250px; width: 100%;">        
