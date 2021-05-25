@@ -3,10 +3,11 @@ package com.spring.finalproject3.yeonha;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-
-
-public class Service implements InterBoardService {
+@Service
+public class BoardService implements InterBoardService {
 
 	@Autowired
 	private InterBoardDAO dao;
