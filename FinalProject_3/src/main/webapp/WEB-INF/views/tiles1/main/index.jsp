@@ -37,14 +37,20 @@
         
      table {
       width: 100%;
-     
+     border-bottom: 1px solid #F5F5F5;
       }
-      table, th, td {
+
+      thead{
       	text-align:center;
-        border: 1px solid #bcbcbc;
-		font-size: 12pt;
-		padding: 5px 0px 5px 0px;
+        border-bottom: 1px solid #bcbcbc;
+		font-size: 15pt;
+		padding: 80px 0px 5px 0px;
       }
+          
+     th{
+      	text-align:center;
+      }
+      
 	.sidenav{
 	  height: 100%;
 	  width: 0;
@@ -72,12 +78,11 @@
 	  color: #f1f1f1;
 	}
 	
-	.sidenav .closebtn {
+	.sidenav .closebtn  {
 	  position: absolute;
 	  top: 0;
 	  right: 25px;
 	  font-size: 36px;
-	  margin-left: 50px;
 	}
 	div#loginInfo{
 		width:100%;
@@ -104,7 +109,7 @@ function closeNav() {
 </script>
    
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img style="transform: scaleX(-1);" src="<%= ctxPath%>/resources/images/close.png" style="width:100%;"></a>
   <div id="loginInfo">
   	<c:if test="${empty SessionScope.loginuser}"><a href="<%=ctxPath%>/login.sam">로그인을 해주세요</a></c:if>
   </div>
@@ -117,7 +122,7 @@ function closeNav() {
 </div>
 
 <div style="width: 40px; font-size: 20pt; font-weight: bold; cursor:pointer;">
-	<span style="font-size:30px; cursor:pointer" onclick="openNav()"><img src="<%= ctxPath%>/resources/images/addmenu.png" style="width:100%;"></span>
+	<span style="text-align: right; cursor:pointer; margin:0px 0px 50px 30px;" onclick="openNav()"><img src="<%= ctxPath%>/resources/images/addmenu.png" style="width:100%;"></span>
 </div>
 
 <div id="calendar" align="center">
@@ -130,11 +135,12 @@ function closeNav() {
 </div>
 
 <div id="mainBoard" align="center">
-		<h2 style="padding-top:50px;">게시판</h2>
+		<h2 style="padding-top:50px; font-weight:bold;">게시판</h2>
 		<h3>실시간 인기글</h3>
+		<br><br>
 	    <table>
 	        <thead>
-	           <tr id="menu">	 
+	           <tr id="menu" align="center">	 
 	              <th>No.</th>
 	              <th>분류</th>
 	              <th>제목</th>

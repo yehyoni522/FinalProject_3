@@ -13,8 +13,8 @@ div.loginView{
 	text-align:center;
 	border: solid 0px red;
 	margin: 0 auto;
-	margin-left: 310px;
-	padding-top: 80px;
+	margin-left: 400px;
+	padding-top: 40px;
 	height: 500px;
 	width: 600px;
 }
@@ -201,7 +201,8 @@ input.findinput{
 <div id="contents"> 
 	<div id="loginContents">
 		<div class="loginView"> 
-			<h1> SsangYongUniv LMS</h1>
+			<h1> 로그인</h1>
+			<br>
 		    <form name="loginFrm">
 			    <h3 style="text-align: center;"></h3>
 			    <div class="form-group">
@@ -211,11 +212,11 @@ input.findinput{
 			    	
 			    	
 				</div>
-				<br>
-					
+				<input type="checkbox" id="saveid" name="saveid"/><label style="font-weight: normal;" for="saveid">&nbsp;아이디저장</label>
+				<span style ="margin-left:240px;"><a>아이디&nbsp;/&nbsp;비밀번호찾기</a></span>
+				<br>	
 			    <button type="button" id="btnSubmit" class="loginSubmit">로그인</button>
 
-			
 			</form>
 		</div>
 	</div>
