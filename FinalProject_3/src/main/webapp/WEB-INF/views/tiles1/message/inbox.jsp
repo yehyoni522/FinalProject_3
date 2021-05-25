@@ -13,6 +13,9 @@
 
 <title> 쪽지함</title>
 <style type="text/css">
+body{
+   font-family: 'Noto Sans KR', sans-serif;
+}
 
 div#msgSide{
 	/* border: solid 1px blue;  */
