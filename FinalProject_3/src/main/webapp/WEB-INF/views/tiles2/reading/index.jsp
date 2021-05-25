@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
     String ctxPath = request.getContextPath();
 %>
@@ -42,10 +43,15 @@
 
 <div class="container container2">
 	<h1 align="center"  style="font-weight:bold;">열람실 예약</h1><br><br>
+	
+	
+	
 	<ul class="nav nav-tabs" style="padding-left:235px;">
-	    <li class="nav-item" data-toggle="tab"><a class="nav-link active" data-toggle="tab" href="#home">제 1 열람실</a></li>
-	    <li class="nav-item" data-toggle="tab"><a class="nav-link" data-toggle="tab" href="#ver2">제 2 열람실</a></li>
-	    <li class="nav-item" data-toggle="tab"><a class="nav-link" data-toggle="tab"href="#ver3">제 3 열람실</a></li>
+	  <c:forEach var="list" items="${requestScope.RroomList}">
+         <li class="nav-item">
+			<a class="nav-link" data-toggle="tab" href="#${list.rcode}">${list.rname}</a>
+		</li>
+      </c:forEach>
   </ul>
 	<br>
 	<div class="tab-content" align="center">
