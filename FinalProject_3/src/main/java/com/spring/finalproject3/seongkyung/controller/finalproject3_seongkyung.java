@@ -10,7 +10,7 @@ public class finalproject3_seongkyung {
 	@RequestMapping(value="/adminhome.sam")
 	public ModelAndView adminhome(ModelAndView mav) {
 		
-		mav.setViewName("admin/adminhome.tiles3");
+		mav.setViewName("admin/adminhome.tiles1");
 		
 		return mav;
 	}
