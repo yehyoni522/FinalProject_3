@@ -21,8 +21,8 @@ public class finalproject3_seungjin {
 	@RequestMapping(value="/login.sam",method= {RequestMethod.GET})
 	public ModelAndView login(ModelAndView mav) {
 		
-		mav.setViewName("login/loginform.tiles1");
-		// /WEB-INF/views/tiles1/login/loginform.jsp 파일을 생성한다.
+		mav.setViewName("login/loginform.tiles2");
+		// /WEB-INF/views/tiles2/login/loginform.jsp 파일을 생성한다.
 		
 		return mav;
 	}
