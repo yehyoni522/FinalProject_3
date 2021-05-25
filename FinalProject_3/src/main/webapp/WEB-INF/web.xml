@@ -27,7 +27,7 @@
 		
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<!-- === #13. URL 패턴에서 확장자 .action 인 것으로 요청을 하면 appServlet 서블릿이 받아서 처리를 해준다. === -->
+		<!-- === #13. URL 패턴에서 확장자 .sam 인 것으로 요청을 하면 appServlet 서블릿이 받아서 처리를 해준다. === -->
 		<url-pattern>*.sam</url-pattern>
 	</servlet-mapping>
 
