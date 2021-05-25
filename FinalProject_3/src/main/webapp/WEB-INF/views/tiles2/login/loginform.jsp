@@ -201,7 +201,7 @@ input.findinput{
 <div id="contents"> 
 	<div id="loginContents">
 		<div class="loginView"> 
-			<h1> 로그인</h1>
+			<h1 style="font-weight: bold;"> 로그인</h1>
 			<br>
 		    <form name="loginFrm">
 			    <h3 style="text-align: center;"></h3>
@@ -213,7 +213,7 @@ input.findinput{
 			    	
 				</div>
 				<input type="checkbox" id="saveid" name="saveid"/><label style="font-weight: normal;" for="saveid">&nbsp;아이디저장</label>
-				<span style ="margin-left:240px;"><a>아이디&nbsp;/&nbsp;비밀번호찾기</a></span>
+				<span style ="margin-left:240px;"><a>등록하기</a><a>/&nbsp;비밀번호찾기</a></span>
 				<br>	
 			    <button type="button" id="btnSubmit" class="loginSubmit">로그인</button>
 

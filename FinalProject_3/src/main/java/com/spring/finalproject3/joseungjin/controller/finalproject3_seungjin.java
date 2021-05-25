@@ -1,4 +1,4 @@
-package com.spring.finalproject3.joseungjin;
+package com.spring.finalproject3.joseungjin.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
