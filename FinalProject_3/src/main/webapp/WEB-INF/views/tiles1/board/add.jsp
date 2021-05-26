@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ 
+<% request.setCharacterEncoding("UTF-8");%>
+<% response.setContentType("text/html; charset=UTF-8");%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <% String ctxPath = request.getContextPath(); %>    
 
 <style type="text/css">
+	#addFrm{
+		padding-left: 10%;
+	}
 	input, textarea {
 		 border: solid gray 1px; 
 	}
@@ -17,6 +24,7 @@
 	.mainline{
 		background-color: #e6e6e6;
 		height: 3px;
+		width: 95%;
 	}
 	button {
 		background-color: white;
@@ -103,16 +111,16 @@
    });// end of $(document).ready(function(){})----------------
 </script>
 
-<div style="padding-left: 10%;">
+<div id="addFrm">
 	<h1>
  		<c:if test="${requestScope.boardList.categoryno == 1}">자유게시판</c:if>
  		<c:if test="${requestScope.boardList.categoryno == 2}">중고거래</c:if>
  		<c:if test="${requestScope.boardList.categoryno == 2}">동아리&공모전 모집</c:if>
 	</h1>
 	<h1>자유게시판</h1>
-<form name="addFrm"> 
+<form> 
  
-<hr class="mainline">
+<hr class="mainline" align="left" >
 	<div id="table">
   	 	<div id="sub">                   
 			<input type="text" name="subject" id="subject" class="long" placeholder="  제목을 입력하세요."/>  
@@ -123,14 +131,14 @@
 	   	</div> 
         <%-- === #150. 파일첨부 타입 추가하기 === --%>
 		<div id="con">
-		   <textarea rows="10" cols="100" style="width: 95%; height: 612px;" name="content" id="content" placeholder="  내용을 입력하세요."></textarea>       
+		   <textarea rows="10" cols="100" style="width: 95%; height: 612px;" name="content" id="smartEditor" placeholder="  내용을 입력하세요."></textarea>       
 		</div>
    
          
        
 
       </div>
-      <hr class="mainline">
+      <hr class="mainline" align="left" >
       <div style="margin-top: 20px;">
          <button type="button" id="btnWrite">등록</button>
          <button type="button" onclick="javascript:history.back()">취소</button>
@@ -139,3 +147,67 @@
    </form>
    
 </div>    
+
+<script type="text/javascript">
+	var oEditors = [];
+	
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef : oEditors,
+		elPlaceHolder : "smartEditor", //저는 textarea의 id와 똑같이 적어줬습니다.
+		sSkinURI : "se2/SmartEditor2Skin.html", //경로를 꼭 맞춰주세요!
+		fCreator : "createSEditor2",
+		htParams : {
+			// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+			bUseToolbar : true,
+			
+			// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+			bUseVerticalResizer : false,
+			
+			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+			bUseModeChanger : false
+		});
+	
+	$(function() {
+		$("#savebutton").click(function() {
+			oEditors.getById["smartEditor"].exec("UPDATE_CONTENTS_FIELD", []);
+			//textarea의 id를 적어줍니다.
+			
+			var selcatd = $("#selcatd > option:selected").val();
+			var title = $("#title").val();
+			var content = document.getElementById("smartEditor").value;
+
+			if (selcatd == "") {
+				alert("카테고리를 선택해주세요.");
+				return;
+			}
+			
+			if (title == null || title == "") {
+				alert("제목을 입력해주세요.");
+				$("#title").focus();
+				return;
+			}
+			
+			if(content == "" || content == null || content == ' ' || content == ' ' || content == ' ' || content == ' '){
+				alert("본문을 작성해주세요.");
+				oEditors.getById["smartEditor"].exec("FOCUS"); //포커싱
+				return;
+			}
+			
+			var result = confirm("발행 하시겠습니까?");
+
+			if(result){ 
+				alert("발행 완료!"); 
+				$("#noticeWriteForm").submit(); 
+			}else{ 
+				return; 
+			}
+
+
+				
+	
+			
+			
+	});
+		
+
+</script>

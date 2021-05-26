@@ -14,7 +14,7 @@
      
     .subjectStyle {font-weight: bold;
                    color: navy;
-                   cursor: pointer;} 
+                   cursor: pointer;}  
 </style>
 
 <script type="text/javascript">
