@@ -11,7 +11,7 @@
     
 div#adminhome {
 	min-height: 700px;
-	padding-top: 20px;
+	padding-top: 50px;
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -20,12 +20,12 @@ div#adminside {
 	float: left;
 	width: 20%;
 	padding-left: 50px;
-	min-height: 600px;
+	min-height: 700px;
 }
     
 div#admincontent {
 	float: left;
-	padding: 0 50px 0 50px;
+	padding: 0 50px; 0 50px;
 	width: 80%;
 }    
 
@@ -46,14 +46,14 @@ div.admintitlesearch {
 
 .adminsbopt {
 	float: left;
-	margin: 0 15px 0 15px;
+	margin: 0 15px; 0 15px;
 }
 
 div.admtitleoptions {
 	border-bottom: 3px solid #b0b0b5; 
 	border-top: 3px solid #b0b0b5; 
 	height: 50px;	
-	padding: 10px 10px 0 10px;
+	padding: 10px; 10px; 0 10px;
 	
 }
 
@@ -63,7 +63,7 @@ div.admtitleoptions {
 
 .admsubtsp {
 	font-size: 12pt;
-	margin: 0 20px 0 280px;
+	margin: 0 20px; 0 20px;
 	font-weight:bold;
 }
 
@@ -97,11 +97,6 @@ tr {
 
 .admthtdall {
 	width: 100px;
-}
-
-.thall {
-	font-weight: bold;
-	font-size: 11pt;
 }
 
 </style>
@@ -185,16 +180,16 @@ tr {
 		<div style="clear: both;">
 			<table>
 				<thead>
-					<tr style="font-weight: bold;">
+					<tr>
 						<th class="admthtd"><input type="checkbox"/></th>
-						<th class="thall" style="margin-right: 70px; width: 30px;">No</th>
-						<th class="admthtdall thall">단과대학</th>
-						<th class="admthtdall thall">학과</th>
-						<th class="admthtdall thall">학번</th>
-						<th class="admthtdall thall">성함</th>
-						<th class="admthtdall thall">아이디</th>
-						<th class="admthtdall thall">휴대전화</th>
-						<th class="admthtdall thall">이메일</th>
+						<th style="margin-right: 70px; width: 30px;">No</th>
+						<th class="admthtdall">단과대학</th>
+						<th class="admthtdall">학과</th>
+						<th class="admthtdall">학번</th>
+						<th class="admthtdall">성함</th>
+						<th class="admthtdall">아이디</th>
+						<th class="admthtdall">휴대전화</th>
+						<th class="admthtdall">이메일</th>
 					</tr>
 				</thead>
 				
@@ -214,7 +209,6 @@ tr {
 					</c:forEach>
 				</tbody>
 			</table>
-			<div align="center">페이지 이동 링크</div>
 		</div>
 						
 	</div>

@@ -7,6 +7,11 @@
 		select rno, rname, rcode, rtotalseat
 		from tbl_RroomNum
 	</select>
+	
+	<select id="timeView" resultType="com.spring.finalproject3.yehyeon.model.TimeVO">
+		select tno, tname
+		from tbl_time	
+	</select>
 
 
 

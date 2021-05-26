@@ -22,4 +22,11 @@ public class ReadingDAO implements InterReadingDAO {
 		return rRoomList;
 	}
 
+	@Override
+	public List<TimeVO> timeView() {
+		
+		List<TimeVO> timeList = sqlsession.selectList("Reading.timeView");
+		return timeList;
+	}
+
 }
