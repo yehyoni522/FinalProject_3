@@ -223,7 +223,7 @@ button.re:hover{
 
 <div class="msgContents" style="width: 70%; display:inline-block ; ">
 
-		<button class="del" type="button" onclick="javascript:location.href='<%= ctxPath%>/del.action?seq=${requestScope.boardvo.seq}'">삭제</button>
+		<button class="del" type="button" onclick="javascript:location.href='<%= ctxPath%>/del.action?seq=${requestScope.inboxvo.seq}'">삭제</button>
 		 <button class="re" >답장</button>
 
 	<div style="margin-left: 30px; display: inline-block; float: right;">
