@@ -111,7 +111,7 @@ button.del{
 	transition:0.3s;
 	transform: translate(-50%,-50%);
 	margin-top:20px;
-	margin-left: 50px;
+	margin-left: 30px;
 }
 button.del:focus {
 	outline:0;
@@ -143,6 +143,36 @@ button.re:hover{
 	cursor: pointer;
 	color: #fff;
 	box-shadow: 0 2px 4px #2ECC71;
+}
+/* /////////////////// */
+
+.green_window {
+	display: inline-block;
+	width: 200px;
+	border: 3px solid #2ECC71;
+	border-radius: 20px;
+}
+.input_text {
+	width: calc( 100% - 40px );
+	margin: 6px 7px;
+	border: 0;
+	font-weight: bold;
+	font-size: 12px;
+	outline: none;
+	border-radius: 20px;
+}
+.sch_smit {
+	width: 40px; height: 30px;
+	margin-top: 5px; border: 0;
+	vertical-align: top;
+	background: #2ECC71;
+	color: white;
+	border-radius: 20px;
+	cursor: pointer;
+	font-size: 12px;
+}
+.sch_smit:hover {
+	background: #27AF61;
 }
 
 </style>
@@ -197,12 +227,13 @@ button.re:hover{
 	
 	<a style="font-size:10px;">안읽은쪽지삭제</a>&nbsp;&nbsp;<span style="color: #2ECC71; font-weight: bold;">5</span>/<span>500</span>
 		<select id="msgSearch" name="msgSearch">
-			<option value="">선택하세요</option>
 			<option value="name">이름</option>
 			<option value="contents">내용</option>
 		</select>
-		<input type="text">
-		<button type="button" onclick="goSearch();" >검색</button>
+		<span class='green_window'>
+			<input type='text' class='input_text' />
+		</span>
+			<button type='submit' class='sch_smit' onclick="goSearch();">검색</button>
 	</div>
 
   <table class="table table-hover">
@@ -215,29 +246,22 @@ button.re:hover{
         <th>읽음표시</th>
       </tr>
     </thead>
+    
+    <c:forEach var="inboxvo" items="${requestScope.boardList}" varStatus="status">     
+    
     <tbody>
       <tr>
         <td><input type="checkbox" /></td>
-        <td>김교수(14023030)</td>
+        <td>${inboxvo.}</td>
         <td>오늘 과제를 안낸학생에게는 큰 벌이있을것이야</td>
         <td>2021-05-20 12:00:00</td>
         <td style="color:red; font-weight: bold;">new</td>
       </tr>
-      <tr>
-        <td><input type="checkbox" /></td>
-        <td>김교수(14023030)</td>
-        <td>오늘 과제를 안낸학생에게는 큰 벌이있을것이야</td>
-        <td>2021-05-20 12:00:00</td>
-        <td>읽음</td>
-      </tr>
-       <tr>
-        <td><input type="checkbox" /></td>
-        <td>김교수(14023030)</td>
-        <td>오늘 과제를 안낸학생에게는 큰 벌이있을것이야</td>
-        <td>2021-05-20 12:00:00</td>
-        <td>읽음</td>
-      </tr>  
+
     </tbody>
+    
+    </c:forEach>
+    
   </table>
 
 </div>
