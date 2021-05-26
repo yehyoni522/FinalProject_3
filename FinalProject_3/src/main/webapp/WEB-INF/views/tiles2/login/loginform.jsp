@@ -157,15 +157,6 @@ input.findinput{
 				goLogin(); // 로그인 시도한다.
 			}	
 		});
-		$("button#register").click(function(){
-			location.href="<%= ctxPath %>/member/memberRegister.cc";
-		});
-		$("button#idFind").click(function(){
-			location.href="<%= request.getContextPath()%>/login/idFind.cc";
-		});
-		$("button#pwdFind").click(function(){
-			location.href="<%= request.getContextPath()%>/login/pwdFind.cc";
-		});
 	});// end of $(document).ready()--------------------------------------
 
 	
@@ -190,7 +181,7 @@ input.findinput{
 		}
 		
 		var frm = document.loginFrm;
-		frm.action = "<%= request.getContextPath()%>/login/login.cc";
+		frm.action = "<%= ctxPath%>/loginEnd.sam";
 	    frm.method = "post";
 		frm.submit();
 		
