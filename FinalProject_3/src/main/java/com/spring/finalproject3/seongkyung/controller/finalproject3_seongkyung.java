@@ -7,12 +7,20 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class finalproject3_seongkyung {
 	
-	@RequestMapping(value="/adminhome.sam")
-	public ModelAndView adminhome(ModelAndView mav) {
+	@RequestMapping(value="/adminmembers.sam")
+	public ModelAndView adminmembers(ModelAndView mav) {
 		
-		mav.setViewName("admin/adminhome.tiles1");
+		mav.setViewName("admin/adminmembers.tiles1");
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/adminmemberstudent.sam")
+	public ModelAndView adminmemberstudent(ModelAndView mav) {
+		
+		mav.setViewName("admin/adminmemberstudent.tiles1");
+		
+		return mav;
+	}	
 
 }

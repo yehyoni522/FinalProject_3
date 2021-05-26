@@ -200,7 +200,7 @@ button.re:hover{
 		location.href="<%= ctxPath%>/outbox.sam";
 	}
 	function goView(seq){
-		location.href="<%= ctxPath%>/inView.sam?inboxSeq="+inboxSeq;	
+		location.href="<%= ctxPath%>/view.sam?inboxSeq="+inboxSeq;	
 	}
 </script>
 
@@ -223,54 +223,27 @@ button.re:hover{
 
 <div class="msgContents" style="width: 70%; display:inline-block ; ">
 
-		<button class="del" type="button" onclick="javascript:location.href='<%= ctxPath%>/del.action?seq=${requestScope.boardvo.seq}'">삭제</button>
-		 <button class="re" >답장</button>
+		<button class="del" type="button" onclick="javascript:location.href='<%= ctxPath%>/inDel.sam?inboxSeq=${requestScope.inboxvo.inboxSeq}'">삭제</button>
+		 <button class="re">답장</button>
+		 	<div>보낸사람 <span>${requestScope.inboxvo.fk_name}</span></div>
+		 	<div>받은시간 <span>${requestScope.inboxvo.reDate}</span></div>
+		 	<hr>
+		 	<div>내용</div>
 
-	<div style="margin-left: 30px; display: inline-block; float: right;">
+	<c:if test="${not empty requestScope.inboxvo}">
+		
+		
+		
+		<br>
+		
+		<div style="margin-bottom: 1%;">이전글제목&nbsp;&nbsp;<span class="move" onclick="javascript:location.href='view.action?seq=${requestScope.boardvo.previousseq}'">${requestScope.boardvo.previoussubject}</span></div>
+		<div style="margin-bottom: 1%;">다음글제목&nbsp;&nbsp;<span class="move" onclick="javascript:location.href='view.action?seq=${requestScope.boardvo.nextseq}'">${requestScope.boardvo.nextsubject}</span></div>
+
+	</c:if>
 	
-	<a style="font-size:10px;">안읽은쪽지삭제</a>&nbsp;&nbsp;<span style="color: #2ECC71; font-weight: bold;">5</span>/<span>500</span>
-		<select id="msgSearch" name="msgSearch">
-			<option value="name">이름</option>
-			<option value="contents">내용</option>
-		</select>
-		<span class='green_window'>
-			<input type='text' class='input_text' />
-		</span>
-			<button type='submit' class='sch_smit' onclick="goSearch();">검색</button>
-	</div>
-
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th><input type="checkbox" id = "check" name="checkall"/><label for="check"></label></th>
-        <th>보낸사람</th>
-        <th>내용</th>
-        <th>날짜</th>
-        <th>읽음표시</th>
-      </tr>
-    </thead>
-    
-    <c:forEach var="inboxvo" items="${requestScope.inboxList}" varStatus="status">     
-    
-    <tbody>
-      <tr>
-        <td><input type="checkbox" /></td>
-        <td>${inboxvo.fk_name}</td>
-        <td><span onclick="goView(${inboxvo.inboxSeq})">${inboxvo.subject}</span></td>
-        <td>${inboxvo.reDate}</td>
-        <c:if test="${inboxvo.readState == 0}">
-        	<td style="color:red; font-weight: bold;">new</td>
-        </c:if>
-        <c:if test="${inboxvo.readState == 1}">
-        	<td>읽음</td>
-        </c:if>
-      </tr>
-
-    </tbody>
-    
-    </c:forEach>
-    
-  </table>
+	<c:if test="${empty requestScope.inboxvo}">
+		<div style="padding: 50px 0; font-size: 16pt; color: red;">존재하지 않습니다</div>
+	</c:if>
 
 </div>
 
