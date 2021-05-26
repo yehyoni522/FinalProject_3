@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ==== #29. mapper 기본설정 ==== -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- // === #95. 페이징 처리를 안한 검색어가 없는 전체 글목록 보여주기 === // 
+   					  전체 글목록을 보여줄 때 딸린 댓글의 개수도 보여준다. -->
+   	<select id="boardListNoSearch" resultType="com.spring.board.model.BoardVO">
+   		select seq, fk_userid, name, subject  
+		     , readcount, to_char(regDate, 'yyyy-mm-dd hh24:mi:ss') as regDate
+		     , commentCount
+		from tbl_board
+		where status = 1
+		order by seq desc
+   	</select>
