@@ -55,14 +55,101 @@
 			alert("선택하신 글을 "+$("#selectBoard option:selected").val()+" (으)로 이동하시겠습니까?");
 		});
 		
-   });// end of $(document).ready(function(){})------------------
+		$("input#searchWord").bind("keydown", function(event){
+	          if(event.keyCode == 13){
+	             goSearch();
+	          }
+	    });
+		
+		<%-- === #107. 검색어 입력시 자동글 완성하기 2 === --%>
+	       $("div#displayList").hide();
+	       
+	       $("input#searchWord").keyup(function(){
+	          
+	          var wordLength = $(this).val().trim().length;
+	          // 검색어의 길이를 알아온다.
+	          
+	          if(wordLength == 0) {
+	             $("div#displayList").hide();
+	             // 검색어가 공백이거나 검색어 입력후 백스페이스키를 눌러서 검색어를 모두 지우면 검색된 내용이 안 나오도록 해야 한다. 
+	          }
+	          else {
+	             $.ajax({
+	                url:"<%= ctxPath%>/wordSearchShow.action",
+	                type:"get",
+	                data:{"searchType":$("select#searchType").val()
+	                    ,"searchWord":$("input#searchWord").val()},
+	                dataType:"json",
+	                success:function(json){ // [] 또는  [{"word":"글쓰기 첫번째 java 연습입니다"},{"word":"글쓰기 두번째 JaVa 연습입니다"}] 
+	                   <%-- === 검색어 입력시 자동글 완성하기 === --%> 
+	                   if(json.length > 0) {
+	                      // 검색된 데이터가 있는 경우임.
+	                      
+	                      var html = "";
+	                      
+	                      $.each(json, function(index, item){
+	                         var word = item.word;
+	                         // word ==> "글쓰기 첫번째 java 연습입니다"
+	                         // word ==> "글쓰기 두번째 JaVa 연습입니다"
+	                         
+	                         var index = word.toLowerCase().indexOf($("input#searchWord").val().toLowerCase());
+	                         // word ==> "글쓰기 첫번째 java 연습입니다"
+	                         // word ==> "글쓰기 두번째 java 연습입니다"
+	                         // 만약에 검색어가 jAva 이라면 index 는 8 이 된다.
+	                         
+	                         var len = $("input#searchWord").val().length;
+	                         // 검색어의 길이 len = 4
+	                         
+	                         word = word.substr(0,index) + "<span style='color:blue;'>"+word.substr(index,len)+"</span>" + word.substr(index+len);
+	                         
+	                         html += "<span style='cursor:pointer;' class='word' >"+word+"</span><br>";
+	                      });
+	                      
+	                      $("div#displayList").html(html);
+	                      $("div#displayList").show();
+	                   }
+	                },
+	                error: function(request, status, error){
+	                   alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+	                 }
+	             });
+	          }
+	          
+	       });
+	       <%-- 끝 === 검색어 입력시 자동글 완성하기  === --%>
+	       
+	       <%-- === 검색어 입력시 자동글 완성하기  === --%> 
+	       $(document).on("click","span.word", function(){
+	          $("input#searchWord").val($(this).text()); // 텍스트박스에 검색된 결과의 문자열을 입력해준다.
+	          $("div#displayList").hide();
+	          goSearch();
+	       });
+	        
+	       //검색시 검색조건 및 검색어 값 유지시키기
+	       if( ${not empty requestScope.paraMap}){
+	          $("select#searchType").val("${requestScope.paraMap.searchType}");
+	          $("input#searchWord").val("${requestScope.paraMap.searchWord}");
+	       }
+	       
+	    });// end of $(document).ready(function(){}---------------------------------------
 
-   
-   function goView(seq){
+
+
+function goView(seq){
 	   
 	   location.href="<%=ctxPath%>/view.action?seq="+seq;
 	   
-   } // end of function goView(seq)-----------------------------
+} // end of function goView(seq)-----------------------------
+
+function goSearch(){
+	   
+	   var frm = document.searchFrm;
+	   frm.method = "get";
+	   frm.action = "<%=ctxPath%>/list.action";
+	   frm.submit();
+	   
+}// end of function goSearch()------------------------------------
+
    
 </script>   
 
@@ -80,6 +167,9 @@
 	      <input type="text" name="searchWord" id="searchWord" size="15" autocomplete="off" /> 
 	      <button type="button" onclick="goSearch()">검색</button>
 	   </form>
+	   <%-- === 검색어 입력시 자동글 완성하기  === --%>
+		<div id="displayList" style="border:solid 1px gray; border-top:0px; width:320px; height:100px; margin-left:70px; overflow:auto;padding-top:5px;">	
+		</div>
    </div>
    
 	
@@ -132,9 +222,7 @@
          <tr>   
              <td align="center">${boardvo.seq}</td>
              <td align="left">
-             <%-- === 댓글쓰기가 없는 게시판 ===             
-             	<span class="subject" onclick="goView('${boardvo.seq}')">${boardvo.subject}</span> --%>
-             <%-- === 댓글쓰기가 없는 게시판 === --%>
+           <%-- === 댓글쓰기가 있는 게시판 === --%>
              <c:if test="${boardvo.commentCount>0}">
              	<span class="subject" onclick="goView('${boardvo.seq}')">${boardvo.subject} <span style="vertical-align: super;">[<span style="color: red; font-size: 9pt; font-style: italic; font-weight: bold;">${boardvo.commentCount}</span>]</span> </span>
            	</c:if>

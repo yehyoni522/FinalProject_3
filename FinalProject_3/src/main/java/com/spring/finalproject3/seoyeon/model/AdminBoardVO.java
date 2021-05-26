@@ -4,11 +4,15 @@ public class AdminBoardVO {
 
 	private String seq;          // 글번호 
    private String fk_userid;    // 사용자ID
-   private String name;         // 글쓴이 
+
    private String subject;      // 글제목
    private String content;      // 글내용 
+   
+   private String file;			// 파일
+   private String categorynum;	// 카테고리 번호
    private String readCount;    // 글조회수
-   private String regDate;      // 글쓴시간
+   private String thumb;		// 좋아요
+   private String regDate;      // 글쓴날짜
    private String status;       // 글삭제여부   1:사용가능한 글,  0:삭제된글 
    
    private String previousseq;      // 이전글번호
@@ -32,14 +36,6 @@ public void setFk_userid(String fk_userid) {
 	this.fk_userid = fk_userid;
 }
 
-public String getName() {
-	return name;
-}
-
-public void setName(String name) {
-	this.name = name;
-}
-
 public String getSubject() {
 	return subject;
 }
@@ -54,6 +50,30 @@ public String getContent() {
 
 public void setContent(String content) {
 	this.content = content;
+}
+
+public String getFile() {
+	return file;
+}
+
+public void setFile(String file) {
+	this.file = file;
+}
+
+public String getCategorynum() {
+	return categorynum;
+}
+
+public void setCategorynum(String categorynum) {
+	this.categorynum = categorynum;
+}
+
+public String getThumb() {
+	return thumb;
+}
+
+public void setThumb(String thumb) {
+	this.thumb = thumb;
 }
 
 public String getReadCount() {
