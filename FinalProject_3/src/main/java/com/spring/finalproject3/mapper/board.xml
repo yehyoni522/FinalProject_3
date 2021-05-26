@@ -7,7 +7,7 @@
 <mapper namespace="board">
 
 	<!-- 페이징 처리를 안한 검색어가 없는 전체 글목록 보여주기 -->
-	 <select id="boardListNoSearch" parameterType="String" resultType="com.spring.finalproject3.yeonha.BoardVO">
+	 <select id="boardListNoSearch" parameterType="String" resultType="com.spring.finalproject.yeonha..BoardVO">
     	select seq, subject, good, fk_hakbun, readCount, commentCount  
 			   , to_char(regDate, 'yyyy/mm/dd') as regDate
 		from tbl_board
@@ -15,11 +15,6 @@
 		order by seq desc
     </select>
     
-    <!-- 글쓰기(파일첨부가 없는 글쓰기) -->
-	<insert id="add" parameterType="com.spring.finalproject3.yeonha.BoardVO">
-		insert into tbl_board(seq, subject, content, categoryno, readCount, regDate, good, fk_stuno, name, status)
-		values(boardSeq.nextval, #{subject}, #{content}, #{categoryno}, default, default, default, #{fk_stuno}, default)
-	</insert>
     
     
     
