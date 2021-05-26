@@ -1,7 +1,6 @@
 package com.spring.finalproject3.yeonha;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,14 +19,5 @@ public class BoardService implements InterBoardService {
 		List<BoardVO> boardListNoSearch = dao.boardListNoSearch(categoryno);
 		return boardListNoSearch;
 	}
-
-	// 게시판 글쓰기완료, 게시글 등록 ( 파일첨부X)
-	@Override
-	public int add(BoardVO boardvo) {
-		int n = dao.add(boardvo);
-		return n;
-	}
-
-
 
 }

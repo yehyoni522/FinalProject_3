@@ -225,14 +225,20 @@ button.re:hover{
 
 		<button class="del" type="button" onclick="javascript:location.href='<%= ctxPath%>/inDel.sam?inboxSeq=${requestScope.inboxvo.inboxSeq}'">삭제</button>
 		 <button class="re">답장</button>
-		 	<div><span style="font-weight: bold;">보낸사람</span> <span>${requestScope.inboxvo.fk_name}</span></div>
-		 	<div><span style="font-weight: bold;">받은시간</span> <span>${requestScope.inboxvo.reDate}</span></div>
+		 	<div>보낸사람 <span>${requestScope.inboxvo.fk_name}</span></div>
+		 	<div>받은시간 <span>${requestScope.inboxvo.reDate}</span></div>
 		 	<hr>
-		 	
+		 	<div>내용</div>
+
 	<c:if test="${not empty requestScope.inboxvo}">
 		
-		<div>${requestScope.inboxvo.subject}</div> <!-- 내용이들어올곳 -->
 		
+		
+		<br>
+		
+		<div style="margin-bottom: 1%;">이전글제목&nbsp;&nbsp;<span class="move" onclick="javascript:location.href='view.action?seq=${requestScope.boardvo.previousseq}'">${requestScope.boardvo.previoussubject}</span></div>
+		<div style="margin-bottom: 1%;">다음글제목&nbsp;&nbsp;<span class="move" onclick="javascript:location.href='view.action?seq=${requestScope.boardvo.nextseq}'">${requestScope.boardvo.nextsubject}</span></div>
+
 	</c:if>
 	
 	<c:if test="${empty requestScope.inboxvo}">

@@ -43,13 +43,10 @@
 
 <div class="container container2">
 	<h1 align="center"  style="font-weight:bold;">열람실 예약</h1><br><br>
-	
-	
-	
 	<ul class="nav nav-tabs" style="padding-left:235px;">
-	  <c:forEach var="list" items="${requestScope.RroomList}">
+	  <c:forEach var="rvo" items="${requestScope.rRoomList}">
          <li class="nav-item">
-			<a class="nav-link" data-toggle="tab" href="#${list.rcode}">${list.rname}</a>
+			<a class="nav-link" data-toggle="tab" href="#${rvo.rcode}">${rvo.rname}</a>
 		</li>
       </c:forEach>
   </ul>
@@ -59,18 +56,9 @@
 			<div class="form-group" style="width:150px;">
 			  <label for="sel1">시간별 좌석보기</label>
 			  <select class="form-control" id="sel1">
-			    <option>00:00 ~ 02:00</option>
-			    <option>02:00 ~ 04:00</option>
-			    <option>04:00 ~ 06:00</option>
-			    <option>06:00 ~ 08:00</option>
-			    <option>08:00 ~ 10:00</option>
-			    <option>10:00 ~ 12:00</option>
-			    <option>12:00 ~ 14:00</option>
-			    <option>14:00 ~ 16:00</option>
-			    <option>16:00 ~ 18:00</option>
-			    <option>18:00 ~ 20:00</option>
-			    <option>20:00 ~ 22:00</option>
-			    <option>22:00 ~ 24:00</option>
+			    <c:forEach var="tvo" items="${requestScope.timeList}">
+			    	<option value="${tvo.tno}">${tvo.tname}</option>
+      			</c:forEach>
 			  </select>
 			</div>
 			<table>
@@ -104,10 +92,10 @@
 				</tr>
 			</table>
 		</div>
-		<div class="tab-pane" id="ver2">
+		<div class="tab-pane" id="secondroom">
 			<span>테스트2</span>
 		</div>
-		<div class="tab-pane" id="ver3">
+		<div class="tab-pane" id="thirdroom">
 			<span>테스트3</span>
 		</div>
 		

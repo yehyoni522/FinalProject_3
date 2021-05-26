@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.finalproject3.yehyeon.model.InterReadingDAO;
 import com.spring.finalproject3.yehyeon.model.RroomNumVO;
+import com.spring.finalproject3.yehyeon.model.TimeVO;
 
 
 @Component
@@ -25,6 +26,15 @@ public class ReadingService implements InterReadingService {
 		List<RroomNumVO> rRoomList = dao.readingRoomView();
 		
 		return rRoomList;
+	}
+
+
+
+	@Override
+	public List<TimeVO> timeView() {
+		
+		List<TimeVO> timeList = dao.timeView();
+		return timeList;
 	}
 
 }

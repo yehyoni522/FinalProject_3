@@ -2,7 +2,6 @@ package com.spring.finalproject3.yehyeon.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.finalproject3.yehyeon.model.RroomNumVO;
+import com.spring.finalproject3.yehyeon.model.TimeVO;
 import com.spring.finalproject3.yehyeon.service.InterReadingService;
 
 
@@ -34,6 +34,10 @@ public class ReadingController {
 		List<RroomNumVO> rRoomList = service.readingRoomView();
 		
 		mav.addObject("rRoomList", rRoomList);
+		
+		List<TimeVO> timeList = service.timeView();
+		mav.addObject("timeList", timeList);
+		
 		mav.setViewName("reading/index.tiles2");
 		
 		return mav;
